@@ -8,9 +8,7 @@ export default function Hero() {
                     <br />
                     A Computer Science Student
                 </h2>
-                <p className="text-lg text-gray-600">
-                    I create responsive, user-friendly web applications with a focus on performance and accessibility.
-                </p>
+
                 <div className="space-x-4">
                     <a
                         href="#projects"
