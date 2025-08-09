@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=Iwp8jpGyeYw&list=PLo_A1jhXyea7i6R5vE_Kc8bggC7EMk8Zu
+
+10:31
+
+-------------------------------------------------------------------------------------
+
+https://simpleicons.org/
+for icons for my portfolio website using react and tailwind
+for downloading lucide we used	npm i lucide-react	it might be downloaded the same way
+
+-------------------------------------------------------------------------------------
+
+learn to put this on github using git
+https://www.youtube.com/watch?v=mJ-qvsxPHpY
