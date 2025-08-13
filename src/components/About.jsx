@@ -1,3 +1,5 @@
+import Particles from "./Particles";
+
 export default function About() {
     const techStack = [
         { name: "HTML5", icon: "/icons/html5.svg" },
@@ -9,10 +11,11 @@ export default function About() {
         { name: "C", icon: "/icons/c.svg" },
         { name: "SQLite3", icon: "/icons/sqlite.svg" },
         { name: "Flask", icon: "/icons/flask.svg" },
+        { name: "AWS", icon: "/icons/aws.svg" },
     ];
 
     return (
-        <div className="max-w-5xl mx-auto px-4 py-16 text-center">
+        <div className="max-w-5xl mx-auto px-4 py-16 text-center ">
             <h3 className="text-3xl font-bold mb-6">About Me</h3>
             <p className="text-gray-600 leading-relaxed mb-10">
                 I’m Steven Hu, a computer science student passionate about software engineering and web development.

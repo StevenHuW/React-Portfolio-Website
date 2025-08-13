@@ -9,6 +9,11 @@ const projects = [
         description: "A task manager app with local storage support.",
         link: "#",
     },
+    {
+        title: "Project",
+        description: "A project.",
+        link: "#",
+    },
 ];
 
 export default function Projects() {
