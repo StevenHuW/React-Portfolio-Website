@@ -10,24 +10,41 @@ const navLinks = [
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [heroInView, setHeroInView] = useState(true);
 
-    // Detect scroll for background change
+    // Detect when HERO section leaves viewport
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        const heroSection = document.getElementById("home");
+        if (!heroSection) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setHeroInView(entry.isIntersecting);
+            },
+            {
+                threshold: 0.1, // hero must mostly leave before switching
+            }
+        );
+
+        observer.observe(heroSection);
+
+        return () => observer.disconnect();
     }, []);
 
     return (
         <header
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "shadow-lg" : "bg-transparent"
+            className={`fixed w-full z-50 ${heroInView
+                ? "bg-transparent"
+                : "bg-white shadow-lg"
                 }`}
         >
             <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-                <h1 className="text-2xl font-bold text-white">Steven Hu</h1>
+                <h1
+                    className={`text-2xl font-bold ${heroInView ? "text-white" : "text-black"
+                        }`}
+                >
+                    Steven Hu
+                </h1>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex space-x-8">
@@ -35,7 +52,11 @@ export default function Header() {
                         <a
                             key={link.href}
                             href={link.href}
-                            className="text-gray-300 hover:text-white transition-colors duration-200"
+                            className={
+                                heroInView
+                                    ? "text-gray-300 hover:text-white"
+                                    : "text-gray-700 hover:text-black"
+                            }
                         >
                             {link.label}
                         </a>
@@ -44,7 +65,8 @@ export default function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden text-gray-300"
+                    className={`md:hidden ${heroInView ? "text-gray-300" : "text-gray-800"
+                        }`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -53,12 +75,12 @@ export default function Header() {
 
             {/* Mobile Nav */}
             {isOpen && (
-                <nav className="md:hidden bg-neutral-900 border-t border-neutral-800">
+                <nav className="md:hidden bg-white border-t border-gray-200">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
-                            className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-neutral-800"
+                            className="block px-4 py-3 text-gray-700 hover:text-black hover:bg-gray-100"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.label}

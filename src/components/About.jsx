@@ -1,5 +1,3 @@
-import Particles from "./Particles";
-
 export default function About() {
     const techStack = [
         { name: "HTML5", icon: "/icons/html5.svg" },
