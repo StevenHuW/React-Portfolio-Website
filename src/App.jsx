@@ -4,6 +4,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SocialLinks from './components/SocialLinks';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
 
       <section id="contact">
         <Contact />
+        <SocialLinks />
       </section>
 
       <Footer />
